@@ -1,0 +1,133 @@
+:root {
+  --primary-color: #f472b6;
+  --secondary-color: #60a5fa;
+  --background: #0f172a;
+  --surface: #1f2937;
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --neon-glow: 0 0 5px rgba(244, 114, 182, 0.5),
+               0 0 20px rgba(244, 114, 182, 0.3),
+               0 0 40px rgba(244, 114, 182, 0.2);
+  --neon-text-glow: 0 0 7px rgba(244, 114, 182, 0.8),
+                    0 0 10px rgba(244, 114, 182, 0.3),
+                    0 0 21px rgba(244, 114, 182, 0.2);
+  --border-glow: 0 0 5px rgba(244, 114, 182, 0.5),
+                0 0 20px rgba(244, 114, 182, 0.3);
+  --hover-shadow: 0 10px 20px rgba(244, 114, 182, 0.2),
+                 0 6px 6px rgba(244, 114, 182, 0.2);
+  --gradient-primary: linear-gradient(45deg, #f472b6, #ff6b6b);
+  --gradient-overlay: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.7)
+  );
+}
+
+html {
+  background-color: var(--background);
+  color: var(--text-primary);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+// 全局动画
+@keyframes neonPulse {
+  0%, 100% {
+    filter: brightness(100%) drop-shadow(var(--neon-glow));
+  }
+  50% {
+    filter: brightness(120%) drop-shadow(var(--neon-glow));
+  }
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: var(--neon-text-glow);
+  }
+  50% {
+    text-shadow: none;
+  }
+}
+
+@keyframes floatAnimation {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: var(--hover-shadow);
+  }
+  50% {
+    transform: translateY(-10px);
+    box-shadow: var(--hover-shadow);
+  }
+}
+
+@keyframes glowingBorder {
+  0%, 100% {
+    box-shadow: var(--border-glow);
+  }
+  50% {
+    box-shadow: none;
+  }
+}
+
+// 全局样式类
+.neon-text {
+  color: var(--primary-color);
+  text-shadow: var(--neon-text-glow);
+}
+
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-bg {
+  background: rgba(31, 41, 55, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+// 响应式布局
+@media (max-width: 768px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+}
+
+// 滚动条样式
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface);
+  border-radius: 4px;
+  
+  &:hover {
+    background: var(--primary-color);
+  }
+}
+
+// 选中文本样式
+::selection {
+  background: var(--primary-color);
+  color: var(--background);
+} 
